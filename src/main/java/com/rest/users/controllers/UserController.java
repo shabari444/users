@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,12 +33,12 @@ public void createUser(@RequestBody User user){
 
 @RequestMapping(value = "/getUser/{userID}", method = RequestMethod.GET)
 
-public Optional<User> getUserbyID(Long userID) {
+public Optional<User> getUserbyID(@PathVariable Long userID) {
 	return userRepository.findById(userID);
 }
 
 @RequestMapping(value = "/deleteUser/{userID}",method = RequestMethod.DELETE)
-public void deleteUser(Long userID) {
+public void deleteUser(@PathVariable Long userID) {
 	userRepository.deleteById(userID);
 }
 
